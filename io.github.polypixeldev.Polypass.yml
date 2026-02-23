@@ -22,6 +22,8 @@ modules:
       - install -Dm644 git_repo/debian/gui/Polypass-128.png "${FLATPAK_DEST}/share/icons/hicolor/128x128/apps/${FLATPAK_ID}.png"
       - install -Dm644 git_repo/debian/gui/Polypass-64.png "${FLATPAK_DEST}/share/icons/hicolor/64x64/apps/${FLATPAK_ID}.png"
       - install -Dm644 git_repo/linux/${FLATPAK_ID}.appdata.xml /app/share/metainfo/${FLATPAK_ID}.metainfo.xml
+    post-install:
+      -  desktop-file-edit --set-key=Exec --set-value=polypass ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
     sources:
       - type: git
         dest: git_repo
